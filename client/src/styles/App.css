@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Rosmatika';
+  src: url('./RosmatikaRegular-BWA45.ttf');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bb-header {
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.book-flex {
+  display: flex;
+  flex-direction: row wrap;
+  align-items: center;
+  justify-items: baseline;
+  gap: 15px;
+
+  width: 75%;
+  height: 400px;
+  margin: 0 auto;
+  overflow-y: scroll;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.details-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  height: 350px;
 }
 
-.App-link {
-  color: #61dafb;
+.book-cover {
+  width: 125px;
+  height: 175px;
+  margin: 10px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#book-cover {
+  width: 100%;
+  height: 100%;
 }
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+
+  width: 125px;
+  height: 150px;
+}
+
+.book-title {
+  height: 75px;
+  line-height: 1;
+  /* text-align: center; */
+}
+
+.author {
+  height: 75px;
+  line-height: 1;
+}
+
+#book-title, #author {
+  margin: 0;
+}
+
+#author {
+  padding-top: 5px;
+}
+
+#count {
+  font-family: 'Rosmatika';
+  display: inline-block;
+  font-size: 22px;
+}
+

@@ -1,21 +1,11 @@
-import axios from 'axios'
-import { useEffect } from 'react'
-import { domain, aPI } from '../globals'
+import BookBar from '../components/BookBar'
 
 const Main = ({ books, setBooks }) => {
-  useEffect(() => {
-    const getBooks = async () => {
-      const books = await axios.get(
-        `${domain}?q=subject:fantasy&subject:science-fiction&orderBy=newest&key=${aPI}`
-      )
-      // let bookArr = books
-      console.log(books.data)
-      // setBooks(bookArr)
-    }
-    getBooks()
-  }, [])
-
-  return <div></div>
+  return (
+    <div>
+      <BookBar books={books} setBooks={setBooks} />
+    </div>
+  )
 }
 
 export default Main
