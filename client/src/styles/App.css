@@ -1,10 +1,45 @@
 @font-face {
+  font-family: 'Backslash';
+  src: url('./Backslash-RpJol.otf');
+}
+
+@font-face {
+  font-family: 'Maginia';
+  src: url('./MaginiaRegular-BWP6x.otf');
+}
+
+/* @font-face {
   font-family: 'Rosmatika';
   src: url('./RosmatikaRegular-BWA45.ttf');
+} */
+
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.App {
+  /* height: 100vh; */
+}
+
+.main {
+}
+
+.book-bar {
+  height: 75%;
+  margin-top: 15px;
 }
 
 .bb-header {
-  
+  width: 75%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#bb-title {
+  font-family: 'Maginia';
+  font-size: 50px;
+  line-height: 2;
 }
 
 .book-flex {
@@ -12,11 +47,14 @@
   flex-direction: row wrap;
   align-items: center;
   justify-items: baseline;
-  gap: 15px;
+  gap: 20px;
 
   width: 75%;
-  height: 400px;
+  height: 350px;
   margin: 0 auto;
+  padding: 20px 0;
+  border: solid 1px gray;
+  border-radius: 15px;
   overflow-y: scroll;
 }
 
@@ -27,12 +65,14 @@
   justify-content: center;
 
   height: 350px;
+  font-family: '';
+  font-size: 18px;
 }
 
 .book-cover {
-  width: 125px;
-  height: 175px;
-  margin: 10px 0;
+  width: 130px;
+  height: 180px;
+  margin: 5px 0;
 }
 
 #book-cover {
@@ -45,23 +85,24 @@
   flex-direction: column;
   /* align-items: center; */
 
-  width: 125px;
+  width: 130px;
   height: 150px;
 }
 
 .book-title {
-  height: 75px;
+  height: 110px;
   line-height: 1;
   /* text-align: center; */
 }
 
 .author {
-  height: 75px;
+  height: 70px;
   line-height: 1;
 }
 
 #book-title, #author {
   margin: 0;
+  padding: 5px;
 }
 
 #author {
@@ -69,8 +110,109 @@
 }
 
 #count {
-  font-family: 'Rosmatika';
   display: inline-block;
-  font-size: 22px;
+  padding-bottom: 5px;
+
+  font-family: 'Maginia';
+  font-size: 24px;
+  font-weight: bold;
 }
 
+.nav-bar {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.nav-bar nav {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 2.5%;
+  margin-bottom: 15px;
+  padding-top: 30px;
+
+}
+
+nav a {
+  margin: 0 5%;
+  text-decoration: none;
+  font-family: 'Maginia';
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 0;
+  letter-spacing: 0.75px;
+  color: black;
+}
+
+nav a:hover {
+  color: lightseagreen;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row wrap;
+  align-items: stretch;
+  justify-items: start;
+
+  width: 75%;
+  margin: 0 auto;
+  border: solid 1px gray;
+  border-radius: 15px;
+  overflow-y: scroll;
+}
+
+.book-table {
+  width: 100%;
+}
+
+.book-table thead {
+  flex-grow: 5;
+}
+
+.new-book {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.book-form {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.form-flex input {
+  margin: 0 10px 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+
+}
+
+.form-flex label {
+  margin: 15px 0 0 15px;
+  padding-bottom: 5px;
+
+  font-family: '';
+  font-size: 1.25em;
+  line-height: 1.5;
+}
+
+.form-flex button {
+  width: 25%;
+  margin: 5% auto;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* ::placeholder {
+  color: black;
+} */

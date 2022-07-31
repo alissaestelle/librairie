@@ -2,8 +2,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { domain, aPI } from '../globals'
 
-const BookBar = ({ books, setBooks }) => {
-  let [count, setCount] = useState(0)
+const BookBar = ({ sFFBar, setBar }) => {
+  let [count] = useState(0)
 
   useEffect(() => {
     const getBooks = async () => {
@@ -11,19 +11,19 @@ const BookBar = ({ books, setBooks }) => {
         `${domain}?q=subject:science-fantasy&orderBy=newest&maxResults=40&key=${aPI}`
       )
       let bookArr = books.data.items
-      setBooks(bookArr)
+      setBar(bookArr)
       console.log(bookArr)
     }
     getBooks()
   }, [])
 
   return (
-    <div>
+    <div className="book-bar">
       <div className="bb-header">
-        <h1>Book Bar</h1>
+        <span id="bb-title">Book Bar</span>
       </div>
       <div className="book-flex">
-        {books.map(
+        {sFFBar.map(
           (book, idx) =>
             book.volumeInfo.title.length < 35 &&
             book.volumeInfo.maturityRating !== 'MATURE' && (
@@ -31,8 +31,8 @@ const BookBar = ({ books, setBooks }) => {
                 <div className="book-cover">
                   <img
                     id="book-cover"
-                    src={book.volumeInfo.imageLinks.smallThumbnail}
-                    alt="Image Thumbnail"
+                    src={book.volumeInfo.imageLinks.thumbnail}
+                    alt="Thumbnail"
                   />
                 </div>
                 <div className="book-details">
@@ -48,6 +48,7 @@ const BookBar = ({ books, setBooks }) => {
                     </p>
                   </div>
                   {/* <p>Publisher: {book.volumeInfo.publisher}</p> */}
+                  {/* <p>{book.volumeInfo.description}</p> */}
                 </div>
               </div>
             )
