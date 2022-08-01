@@ -5,7 +5,8 @@ const NavBar = () => {
     <div className="nav-bar">
       <nav>
         <Link to="/">My List</Link>
-        <Link to="/new">Add New Book</Link>
+        <span id="slash">/</span>
+        <Link to="/new">Add Book</Link>
       </nav>
     </div>
   )

@@ -32,7 +32,7 @@
   text-align: left;
 }
 
-#bb-title {
+#bb-title  {
   font-family: 'Maginia';
   font-size: 50px;
   line-height: 2;
@@ -117,27 +117,29 @@
 .nav-bar {
   width: 75%;
   margin: 0 auto;
-  text-align: center;
+  margin-top: 15px;
 }
 
 .nav-bar nav {
   width: 100%;
   margin: 0 auto;
-  margin-top: 2.5%;
+  /* margin-top: 2.5%;
   margin-bottom: 15px;
-  padding-top: 30px;
+  padding-top: 30px; */
 
 }
 
-nav a {
-  margin: 0 5%;
+nav a, #slash {
+  /* margin: 0 5%; */
   text-decoration: none;
   font-family: 'Maginia';
-  font-size: 1.75em;
-  font-weight: bold;
-  line-height: 0;
-  letter-spacing: 0.75px;
+  font-size: 50px;
+  line-height: 2;
   color: black;
+}
+
+#slash {
+  padding: 0 5px;
 }
 
 nav a:hover {
@@ -147,8 +149,8 @@ nav a:hover {
 .pagination {
   display: flex;
   flex-direction: row wrap;
-  align-items: stretch;
-  justify-items: start;
+  align-items: center;
+  justify-items: center;
 
   width: 75%;
   margin: 0 auto;
@@ -162,9 +164,43 @@ nav a:hover {
   width: 100%;
 }
 
-.book-table thead {
-  flex-grow: 5;
+thead {
+  height: 50px;
 }
+
+.tr {
+  height: 75px;
+}
+
+.title {
+  width: 175px;
+}
+
+.title a {
+  text-decoration: none;
+  color: lightseagreen;
+}
+
+.author {
+  width: 125px;
+}
+
+.desc {
+  width: 250px;
+  height: 25px;
+  overflow-x: scroll;
+}
+
+.publishDate {
+  width: 100px;
+  text-align: center;
+}
+
+.edition, .status {
+  width: 50px;
+  text-align: center;
+}
+
 
 .new-book {
   width: 75%;
@@ -204,10 +240,6 @@ nav a:hover {
   line-height: 1.5;
 }
 
-#date {
-  letter-spacing: 0.5px;
-}
-
 #submit {
   width: 100px;
   margin: 30px auto 30px auto;
@@ -215,7 +247,3 @@ nav a:hover {
   border: 1px solid black;
   border-radius: 20px;
 }
-
-/* ::placeholder {
-  color: black;
-} */

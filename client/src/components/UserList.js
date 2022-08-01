@@ -20,25 +20,25 @@ const UserList = ({ collection, setCollection }) => {
       <table className="book-table">
         <thead>
           <tr className="tr">
-            <th id="title">Title</th>
-            <th id="author">Author</th>
-            <th id="desc">Description</th>
-            <th id="publishDate">Published</th>
-            <th id="edition">Edition</th>
-            <th id="status">Status</th>
+            <th className="title">Title</th>
+            <th className="author">Author</th>
+            <th className="desc">Description</th>
+            <th className="publishDate">Published</th>
+            <th className="edition">Edition</th>
+            <th className="status">Status</th>
           </tr>
         </thead>
         <tbody>
           {collection.map((book) => (
             <tr key={book.id} className="tr">
-              <td>
+              <td className="title">
                 <Link to={`/new/${book.id}`}>{book.title}</Link>
               </td>
-              <td>{book.author}</td>
-              <td>{book.desc}</td>
-              <td>{book.publishDate}</td>
-              <td>{book.edition}</td>
-              <td>
+              <td className="author">{book.author}</td>
+              <td className="desc">{book.desc}</td>
+              <td className="publishDate">{book.publishDate}</td>
+              <td className="edition">{book.edition}</td>
+              <td className="status">
                 <label className="status">
                   <input type="checkbox"></input>
                 </label>
