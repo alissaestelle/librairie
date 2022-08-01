@@ -1,4 +1,4 @@
-import BookForm from './BookForm'
+import BookForm from '../components/BookForm'
 
 const NewBook = ({ book, change, submit }) => {
   return (

@@ -1,15 +1,17 @@
-import Client from './services/api'
 import BookBar from './components/BookBar'
+import Client from './services/api'
+import EditBook from './pages/EditBook'
 import NavBar from './components/NavBar'
-import NewBook from './components/NewBook'
+import NewBook from './pages/NewBook'
 import UserList from './components/UserList'
 import { baseURL } from './services/api'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './styles/App.css'
 
 function App(props) {
   // sFF: Science-Fiction Fantasy
+  let navigate = useNavigate()
   const [sFFBar, setBar] = useState([])
   const [collection, setCollection] = useState([])
 
@@ -17,7 +19,7 @@ function App(props) {
     title: props.book ? props.book.title : '',
     author: props.book ? props.book.author : '',
     desc: props.book ? props.book.desc : '',
-    publishDate: props.book ? new Date(props.book.publishDate) : '',
+    publishDate: props.book ? props.book.publishDate : '',
     edition: props.book ? parseInt(props.book.edition) : '',
     status: props.book ? props.book.status : false
   })
@@ -38,6 +40,7 @@ function App(props) {
       edition: '',
       status: false
     })
+    navigate('/')
   }
 
   return (
@@ -55,6 +58,19 @@ function App(props) {
           path="/new"
           element={
             <NewBook book={book} change={handleChange} submit={handleSubmit} />
+          }
+        />
+        <Route
+          path="/edit/:bookID"
+          element={
+            <EditBook
+              book={book}
+              change={handleChange}
+              // details={bookDetails}
+              setBook={setBook}
+              // setDetails={setDetails}
+              submit={handleSubmit}
+            />
           }
         />
       </Routes>

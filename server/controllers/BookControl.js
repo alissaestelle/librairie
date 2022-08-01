@@ -9,6 +9,19 @@ const CreateBook = async (req, res) => {
   }
 }
 
+const GetBookByID = async (req, res) => {
+  try {
+    let thisBook = await Book.findAll({
+      where: {
+        id: req.params.bookID
+      }
+    })
+    res.send(thisBook)
+  } catch (e) {
+    throw e
+  }
+}
+
 const GetCollection = async (req, res) => {
   try {
     let collection = await Book.findAll()
@@ -18,7 +31,22 @@ const GetCollection = async (req, res) => {
   }
 }
 
+const UpdateBook = async (req, res) => {
+  try {
+    let revisions = await Book.update(req.body, {
+      where: {
+        id: req.params.bookID
+      }
+    })
+    res.send(revisions)
+  } catch (e) {
+    throw e
+  }
+}
+
 module.exports = {
   CreateBook,
-  GetCollection
+  GetBookByID,
+  GetCollection,
+  UpdateBook
 }

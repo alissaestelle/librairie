@@ -12,7 +12,7 @@ const getAllBooks = async () => {
 const deleteBook = async () => {
   let book = await Book.destroy({
     where: {
-      id: 3
+      id: 10
     }
   })
   stringify(book)

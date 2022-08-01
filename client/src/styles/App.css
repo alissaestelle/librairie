@@ -181,6 +181,10 @@ thead {
   color: lightseagreen;
 }
 
+.title a:hover {
+  color: rgb(141, 213, 219);
+}
+
 .author {
   width: 125px;
 }

@@ -1,14 +1,24 @@
-const BookForm = ({ book, change, submit }) => {
+const BookForm = ({
+  author,
+  book,
+  change,
+  desc,
+  edition,
+  handleEdition,
+  publishDate,
+  submit,
+  title
+}) => {
   return (
     <div className="book-form">
-      <form className="form-flex">
+      <form className="form-flex" onSubmit={submit}>
         <label htmlFor="title">Title</label>
         <input
           required
           type="text"
           placeholder="Title of Book Here"
           name="title"
-          value={book.title}
+          value={title ? title : book.title}
           onChange={change}
         ></input>
         <label htmlFor="author">Author</label>
@@ -17,7 +27,7 @@ const BookForm = ({ book, change, submit }) => {
           type="text"
           placeholder="Name of Author Here"
           name="author"
-          value={book.author}
+          value={author ? author : book.author}
           onChange={change}
         ></input>
         <label htmlFor="desc">Description</label>
@@ -25,14 +35,14 @@ const BookForm = ({ book, change, submit }) => {
           type="text"
           placeholder="Book Description Here"
           name="desc"
-          value={book.desc}
+          value={desc ? desc : book.desc}
           onChange={change}
         ></input>
         <label htmlFor="pub_date">Publish Date</label>
         <input
           type="date"
           name="publishDate"
-          value={book.publishDate}
+          value={publishDate ? publishDate : book.publishDate}
           onChange={change}
         ></input>
         <label htmlFor="edition">Edition</label>
@@ -40,10 +50,12 @@ const BookForm = ({ book, change, submit }) => {
           type="number"
           placeholder="Book Edition Here"
           name="edition"
-          value={book.edition}
-          onChange={change}
+          value={edition ? edition : book.edition}
+          onChange={edition ? handleEdition : change}
         ></input>
-        <input id="submit" type="button" value="Submit" onClick={submit} />
+        <button id="submit" text="Submit">
+          Submit
+        </button>
       </form>
     </div>
   )

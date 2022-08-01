@@ -17,10 +17,22 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      author: DataTypes.STRING,
-      desc: DataTypes.STRING,
-      publishDate: DataTypes.DATEONLY,
-      edition: DataTypes.INTEGER,
+      author: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      desc: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      publishDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: true
+      },
+      edition: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
       status: DataTypes.BOOLEAN
     },
     {

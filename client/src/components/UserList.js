@@ -32,7 +32,7 @@ const UserList = ({ collection, setCollection }) => {
           {collection.map((book) => (
             <tr key={book.id} className="tr">
               <td className="title">
-                <Link to={`/new/${book.id}`}>{book.title}</Link>
+                <Link to={`/edit/${book.id}`}>{book.title}</Link>
               </td>
               <td className="author">{book.author}</td>
               <td className="desc">{book.desc}</td>
