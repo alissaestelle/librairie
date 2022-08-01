@@ -1,15 +1,9 @@
 import BookForm from './BookForm'
 
-const NewBook = ({ book, setBook, change, date, submit }) => {
+const NewBook = ({ book, change, submit }) => {
   return (
     <div className="new-book">
-      <BookForm
-        book={book}
-        setBook={setBook}
-        change={change}
-        // date={date}
-        submit={submit}
-      />
+      <BookForm book={book} change={change} submit={submit} />
     </div>
   )
 }

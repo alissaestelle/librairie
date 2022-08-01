@@ -1,2 +1,7 @@
-const router = require('express').Router()
+const Router = require('express').Router()
 const controller = require('../controllers/BookControl')
+
+Router.post('/create', controller.CreateBook)
+Router.get('/collection', controller.GetCollection)
+
+module.exports = Router

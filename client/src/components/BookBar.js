@@ -26,7 +26,7 @@ const BookBar = ({ sFFBar, setBar }) => {
         {sFFBar.map(
           (book, idx) =>
             book.volumeInfo.title.length < 35 &&
-            book.volumeInfo.maturityRating !== 'MATURE' && (
+            book.volumeInfo.maturityRating === 'NOT_MATURE' && (
               <div className="details-flex" key={book.etag}>
                 <div className="book-cover">
                   <img

@@ -13,7 +13,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/book', BookRouter)
+app.use('/books', BookRouter)
 
 app.get('/', (req, res) => res.json({ message: 'Server Running!' }))
 

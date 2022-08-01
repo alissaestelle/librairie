@@ -1,20 +1,4 @@
-import Client from '../services/api'
-import { baseURL } from '../services/api'
-
-const BookForm = ({ book, setBook, change, date, submit }) => {
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   await Client.post(`${baseURL}/book/new`, book)
-  //     .then((res) => console.log('Post Successful'))
-  //     .catch((err) => console.log(err.data))
-  //   setBook({
-  //     title: '',
-  //     author: '',
-  //     desc: '',
-  //     pub_date: '',
-  //     edition: 0
-  //   })
-
+const BookForm = ({ book, change, submit }) => {
   return (
     <div className="book-form">
       <form className="form-flex">
@@ -47,8 +31,8 @@ const BookForm = ({ book, setBook, change, date, submit }) => {
         <label htmlFor="pub_date">Publish Date</label>
         <input
           type="date"
-          name="pub_date"
-          value={book.pub_date}
+          name="publishDate"
+          value={book.publishDate}
           onChange={change}
         ></input>
         <label htmlFor="edition">Edition</label>

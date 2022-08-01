@@ -1,7 +1,9 @@
+import Client from './services/api'
 import BookBar from './components/BookBar'
 import NavBar from './components/NavBar'
 import NewBook from './components/NewBook'
 import UserList from './components/UserList'
+import { baseURL } from './services/api'
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import './styles/App.css'
@@ -9,14 +11,15 @@ import './styles/App.css'
 function App(props) {
   // sFF: Science-Fiction Fantasy
   const [sFFBar, setBar] = useState([])
-  // const [bookSearch, setSearch] = useState('')
+  const [collection, setCollection] = useState([])
 
   const [book, setBook] = useState({
     title: props.book ? props.book.title : '',
     author: props.book ? props.book.author : '',
     desc: props.book ? props.book.desc : '',
-    pub_date: props.book ? new Date(props.book.pub_date) : '',
-    edition: props.book ? parseInt(props.book.edition) : ''
+    publishDate: props.book ? new Date(props.book.publishDate) : '',
+    edition: props.book ? parseInt(props.book.edition) : '',
+    status: props.book ? props.book.status : false
   })
 
   const handleChange = (e) => {
@@ -24,23 +27,17 @@ function App(props) {
     setBook({ ...book, [e.target.name]: e.target.value })
   }
 
-  // const handleDate = (e) => {
-  //   let locale = new Date(e.target.value)
-  //   let publishDate = locale.toLocaleDateString()
-  //   console.log(publishDate)
-  //   setBook({
-  //     ...book,
-  //     [e.target.value]: publishDate
-  //   })
-  // }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(`Book Title: ${book.title}`)
-    console.log(`Book Author: ${book.author}`)
-    console.log(`Description: ${book.desc}`)
-    console.log(`Publish Date: ${book.pub_date}`)
-    console.log(`Edition: ${book.edition}`)
+    await Client.post(`${baseURL}/books/create`, book)
+    setBook({
+      title: '',
+      author: '',
+      desc: '',
+      publishDate: '',
+      edition: '',
+      status: false
+    })
   }
 
   return (
@@ -48,17 +45,16 @@ function App(props) {
       <BookBar sFFBar={sFFBar} setBar={setBar} />
       <NavBar />
       <Routes>
-        <Route path="/" element={<UserList />} />
+        <Route
+          path="/"
+          element={
+            <UserList collection={collection} setCollection={setCollection} />
+          }
+        />
         <Route
           path="/new"
           element={
-            <NewBook
-              book={book}
-              setBook={setBook}
-              change={handleChange}
-              // date={handleDate}
-              submit={handleSubmit}
-            />
+            <NewBook book={book} change={handleChange} submit={handleSubmit} />
           }
         />
       </Routes>
