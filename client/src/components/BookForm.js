@@ -1,50 +1,65 @@
-const BookForm = ({ book, handleChange }) => {
+import Client from '../services/api'
+import { baseURL } from '../services/api'
+
+const BookForm = ({ book, setBook, change, date, submit }) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   await Client.post(`${baseURL}/book/new`, book)
+  //     .then((res) => console.log('Post Successful'))
+  //     .catch((err) => console.log(err.data))
+  //   setBook({
+  //     title: '',
+  //     author: '',
+  //     desc: '',
+  //     pub_date: '',
+  //     edition: 0
+  //   })
+
   return (
     <div className="book-form">
       <form className="form-flex">
-        <label for="name">Title</label>
+        <label htmlFor="title">Title</label>
         <input
           required
           type="text"
           placeholder="Title of Book Here"
           name="title"
           value={book.title}
-          onChange={handleChange}
+          onChange={change}
         ></input>
-        <label for="author">Author</label>
+        <label htmlFor="author">Author</label>
         <input
           required
           type="text"
           placeholder="Name of Author Here"
           name="author"
           value={book.author}
-          onChange={handleChange}
+          onChange={change}
         ></input>
-        <label for="desc">Description</label>
+        <label htmlFor="desc">Description</label>
         <input
           type="text"
           placeholder="Book Description Here"
           name="desc"
           value={book.desc}
-          onChange={handleChange}
+          onChange={change}
         ></input>
-        <label for="pub_date">Publish Date</label>
+        <label htmlFor="pub_date">Publish Date</label>
         <input
-          type="text"
-          placeholder="Publish Date Here"
+          type="date"
           name="pub_date"
           value={book.pub_date}
-          onChange={handleChange}
+          onChange={change}
         ></input>
-        <label for="edition">Edition</label>
+        <label htmlFor="edition">Edition</label>
         <input
-          type="text"
+          type="number"
           placeholder="Book Edition Here"
           name="edition"
           value={book.edition}
-          onChange={handleChange}
+          onChange={change}
         ></input>
-        <button>Submit</button>
+        <input id="submit" type="button" value="Submit" onClick={submit} />
       </form>
     </div>
   )

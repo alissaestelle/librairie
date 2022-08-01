@@ -13,10 +13,6 @@
   src: url('./RosmatikaRegular-BWA45.ttf');
 } */
 
-* {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-}
 
 .App {
   /* height: 100vh; */
@@ -156,6 +152,7 @@ nav a:hover {
 
   width: 75%;
   margin: 0 auto;
+  margin-bottom: 5%;
   border: solid 1px gray;
   border-radius: 15px;
   overflow-y: scroll;
@@ -175,7 +172,7 @@ nav a:hover {
 }
 
 .book-form {
-  width: 500px;
+  max-width: 60%;
   margin: 0 auto;
   border: 1px solid gray;
   border-radius: 15px;
@@ -184,12 +181,14 @@ nav a:hover {
 .form-flex {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  max-width: 75%;
+  min-width: max-content;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 .form-flex input {
-  margin: 0 10px 10px;
+  margin: 0;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
@@ -205,12 +204,16 @@ nav a:hover {
   line-height: 1.5;
 }
 
-.form-flex button {
-  width: 25%;
-  margin: 5% auto;
-  padding: 5px;
+#date {
+  letter-spacing: 0.5px;
+}
+
+#submit {
+  width: 100px;
+  margin: 30px auto 30px auto;
+  padding: 10px 5px;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 /* ::placeholder {

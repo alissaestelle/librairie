@@ -9,7 +9,7 @@ const UserList = () => {
             <th id="desc">Description</th>
             <th id="pub-date">Publish Date</th>
             <th id="edit">Edition</th>
-            <th id="check">Check Out</th>
+            <th id="check">Check-Out Status</th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +19,11 @@ const UserList = () => {
             <td>"The Physics of Yesterday's Tomorrow"</td>
             <td>4/12/22</td>
             <td>1st</td>
-            <td>Y</td>
+            <td>
+              <label className="status">
+                <input type="checkbox"></input>
+              </label>
+            </td>
           </tr>
         </tbody>
       </table>
