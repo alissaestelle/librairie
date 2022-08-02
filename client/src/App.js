@@ -17,12 +17,12 @@ function App(props) {
   const [collection, setCollection] = useState([])
 
   const [book, setBook] = useState({
-    title: '',
-    author: '',
-    desc: '',
-    publishDate: '',
-    edition: '',
-    status: false
+    title: props.book ? props.book.title : '',
+    author: props.book ? props.book.author : '',
+    desc: props.book ? props.book.desc : '',
+    publishDate: props.book ? props.book.publishDate : '',
+    edition: props.book ? props.book.edtion : '',
+    status: props.book ? props.book.edition : false
   })
 
   const [bookDetails, setDetails] = useState('')
@@ -68,9 +68,11 @@ function App(props) {
           element={
             <EditBook
               book={book}
+              change={handleChange}
               details={bookDetails}
               setBook={setBook}
               setDetails={setDetails}
+              submit={handleSubmit}
             />
           }
         />

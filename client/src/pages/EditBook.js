@@ -4,7 +4,7 @@ import { baseURL } from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 
-const EditBook = ({ details, setDetails }) => {
+const EditBook = ({ book, details, setDetails }) => {
   let { bookID } = useParams()
   let navigate = useNavigate()
 
@@ -38,9 +38,11 @@ const EditBook = ({ details, setDetails }) => {
       {details && (
         <BookForm
           author={details.author}
+          book={book}
           change={handleEdit}
           desc={details.desc}
           edition={details.edition}
+          key={details.id}
           publishDate={details.publishDate}
           submit={submitEdit}
           title={details.title}
