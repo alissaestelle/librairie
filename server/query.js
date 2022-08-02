@@ -12,7 +12,7 @@ const getAllBooks = async () => {
 const deleteBook = async () => {
   let book = await Book.destroy({
     where: {
-      id: 10
+      id: 12
     }
   })
   stringify(book)
@@ -20,10 +20,10 @@ const deleteBook = async () => {
 
 async function main() {
   try {
-    await getAllBooks()
-    // await deleteBook()
+    // await getAllBooks()
+    await deleteBook()
   } catch (e) {
-    console.log()
+    console.log(e)
   } finally {
     await sequelize.close()
   }

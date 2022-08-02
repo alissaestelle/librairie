@@ -9,8 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       author: {
         type: Sequelize.STRING
@@ -22,7 +21,7 @@ module.exports = {
         type: Sequelize.DATEONLY
       },
       edition: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       status: {
         type: Sequelize.BOOLEAN

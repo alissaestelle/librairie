@@ -33,11 +33,13 @@ const GetCollection = async (req, res) => {
 
 const UpdateBook = async (req, res) => {
   try {
+    let thisID = parseInt(req.params.bookID)
     let revisions = await Book.update(req.body, {
       where: {
-        id: req.params.bookID
+        id: thisID
       }
     })
+    console.log(revisions)
     res.send(revisions)
   } catch (e) {
     throw e

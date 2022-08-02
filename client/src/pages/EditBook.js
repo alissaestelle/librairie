@@ -1,20 +1,13 @@
 import BookForm from '../components/BookForm'
-import Client, { baseURL } from '../services/api'
+import Client from '../services/api'
+import { baseURL } from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-const EditBook = () => {
+const EditBook = ({ book, details, setDetails }) => {
   let { bookID } = useParams()
   let navigate = useNavigate()
-
-  const [details, setDetails] = useState({
-    title: '',
-    author: '',
-    desc: '',
-    publishDate: '',
-    edition: '',
-    status: false
-  })
+  let [current, setCurrent] = useState(book)
 
   useEffect(() => {
     const getBookByID = async () => {
@@ -28,56 +21,36 @@ const EditBook = () => {
   }, [bookID])
 
   const handleEdit = (e) => {
-    if (e.target.value === '') e.target.value = 'n/a'
-
     let edits = {
       ...details,
-      [e.target.name]: e.target.value,
-      status: details.status
+      [e.currentTarget.name]: e.currentTarget.value
     }
-
-    // let edits = {
-    //   ...details,
-    //   [e.target.name]: e.target.value
-    // }
     console.log(e.target.value)
     setDetails(edits)
-  }
-
-  const handleEdition = (e) => {
-    if (e.target.value === '') e.target.value = 0
-    let edition = {
-      ...details,
-      [e.target.name]: e.target.value,
-      status: details.status
-    }
-
-    console.log(e.target.value)
-    setDetails(edition)
   }
 
   const submitEdit = async (e) => {
     e.preventDefault()
     console.log(details)
-    let res = await Client.put(`${baseURL}/books/find/${bookID}`, details)
-      .then((res) => console.log('Book Updated Successfully'))
-      .catch((err) => console.log(err.data))
+    await Client.put(`${baseURL}/books/update/${bookID}`, details)
     setDetails('')
+    navigate('/')
   }
 
   return (
     <div className="edit-book">
       {details && (
         <BookForm
-          key={details.id}
-          title={details.title}
           author={details.author}
+          book={book}
           desc={details.desc}
-          publishDate={details.publishDate}
           edition={details.edition}
+          details={details}
           change={handleEdit}
-          handleEdition={handleEdition}
+          current={current}
+          publishDate={details.publishDate}
           submit={submitEdit}
+          title={details.title}
         />
       )}
     </div>

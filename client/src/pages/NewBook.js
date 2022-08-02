@@ -1,9 +1,9 @@
 import BookForm from '../components/BookForm'
 
-const NewBook = ({ book, change, submit }) => {
+const NewBook = ({ book, change, details, submit }) => {
   return (
     <div className="new-book">
-      <BookForm book={book} change={change} submit={submit} />
+      <BookForm book={book} details={details} change={change} submit={submit} />
     </div>
   )
 }

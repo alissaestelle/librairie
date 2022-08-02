@@ -13,26 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Book.init(
     {
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      author: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      desc: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      publishDate: {
-        type: DataTypes.DATEONLY,
-        allowNull: true
-      },
-      edition: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
+      title: DataTypes.STRING,
+      author: DataTypes.STRING,
+      desc: DataTypes.STRING,
+      publishDate: DataTypes.DATEONLY,
+      edition: DataTypes.STRING,
       status: DataTypes.BOOLEAN
     },
     {

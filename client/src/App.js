@@ -1,5 +1,5 @@
-import BookBar from './components/BookBar'
 import Client from './services/api'
+import BookBar from './components/BookBar'
 import EditBook from './pages/EditBook'
 import NavBar from './components/NavBar'
 import NewBook from './pages/NewBook'
@@ -16,13 +16,15 @@ function App(props) {
   const [collection, setCollection] = useState([])
 
   const [book, setBook] = useState({
-    title: props.book ? props.book.title : '',
-    author: props.book ? props.book.author : '',
-    desc: props.book ? props.book.desc : '',
-    publishDate: props.book ? props.book.publishDate : '',
-    edition: props.book ? parseInt(props.book.edition) : '',
-    status: props.book ? props.book.status : false
+    title: '',
+    author: '',
+    desc: '',
+    publishDate: '',
+    edition: '',
+    status: false
   })
+
+  const [bookDetails, setDetails] = useState('')
 
   const handleChange = (e) => {
     console.log(e.target.value)
@@ -65,11 +67,9 @@ function App(props) {
           element={
             <EditBook
               book={book}
-              change={handleChange}
-              // details={bookDetails}
+              details={bookDetails}
               setBook={setBook}
-              // setDetails={setDetails}
-              submit={handleSubmit}
+              setDetails={setDetails}
             />
           }
         />
