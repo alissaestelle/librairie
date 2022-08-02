@@ -10,8 +10,9 @@ import { useState } from 'react'
 import './styles/App.css'
 
 function App(props) {
-  // sFF: Science-Fiction Fantasy
   let navigate = useNavigate()
+
+  // sFF: Science-Fiction Fantasy
   const [sFFBar, setBar] = useState([])
   const [collection, setCollection] = useState([])
 

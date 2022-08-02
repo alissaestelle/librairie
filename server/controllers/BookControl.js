@@ -46,9 +46,23 @@ const UpdateBook = async (req, res) => {
   }
 }
 
+const DeleteBook = async (req, res) => {
+  try {
+    await Book.destroy({
+      where: {
+        id: req.params.bookID
+      }
+    })
+    res.send({ msg: 'Book Successfully Deleted', status: 'OK' })
+  } catch (e) {
+    throw e
+  }
+}
+
 module.exports = {
   CreateBook,
   GetBookByID,
+  DeleteBook,
   GetCollection,
   UpdateBook
 }

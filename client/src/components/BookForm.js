@@ -4,23 +4,12 @@ const BookForm = ({
   author,
   book,
   change,
-  current,
   desc,
-  details,
   edition,
   publishDate,
   submit,
   title
 }) => {
-  // const [current, setCurrent] = useState()
-
-  // useEffect(() => {
-  //   const checkRequest = () => {
-  //     details ? setCurrent(details) : setCurrent(book)
-  //   }
-  //   checkRequest()
-  // }, [])
-
   return (
     <div className="book-form">
       <form className="form-flex" onSubmit={submit}>

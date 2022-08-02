@@ -5,5 +5,6 @@ Router.post('/create', controller.CreateBook)
 Router.get('/find/:bookID', controller.GetBookByID)
 Router.put('/update/:bookID', controller.UpdateBook)
 Router.get('/collection', controller.GetCollection)
+Router.delete('/delete/:bookID', controller.DeleteBook)
 
 module.exports = Router

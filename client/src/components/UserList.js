@@ -9,11 +9,15 @@ const UserList = ({ collection, setCollection }) => {
       let res = await Client.get(`${baseURL}/books/collection`)
 
       let bookArr = res.data
-      console.log(bookArr)
       setCollection(bookArr)
     }
     getCollection()
   }, [])
+
+  const deleteBook = async (book) => {
+    await Client.delete(`${baseURL}/books/delete/${book}`)
+    window.location.reload(false)
+  }
 
   return (
     <div className="pagination">
@@ -26,6 +30,7 @@ const UserList = ({ collection, setCollection }) => {
             <th className="publishDate">Published</th>
             <th className="edition">Edition</th>
             <th className="status">Status</th>
+            <th className="delete">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -40,8 +45,16 @@ const UserList = ({ collection, setCollection }) => {
               <td className="edition">{book.edition}</td>
               <td className="status">
                 <label className="status">
-                  <input type="checkbox"></input>
+                  <select name="status">
+                    <option value="in">Checked In</option>
+                    <option value="out">Checked Out</option>
+                  </select>
                 </label>
+              </td>
+              <td className="delete">
+                <button id="delete" onClick={() => deleteBook(book.id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
