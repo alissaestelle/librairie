@@ -1,31 +1,47 @@
-import Client from './services/api'
 import BookBar from './components/BookBar'
+import Client, { baseURL } from './services/api'
 import EditBook from './pages/EditBook'
 import NavBar from './components/NavBar'
 import NewBook from './pages/NewBook'
 import UserList from './components/UserList'
-import { baseURL } from './services/api'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './styles/App.css'
 
-function App(props) {
+function App() {
   let navigate = useNavigate()
 
-  // sFF: Science-Fiction Fantasy
-  const [sFFBar, setBar] = useState([])
-  const [collection, setCollection] = useState([])
+  const [bookBar, setBar] = useState([])
+  const [bookDetails, setDetails] = useState('')
 
   const [book, setBook] = useState({
-    title: props.book ? props.book.title : '',
-    author: props.book ? props.book.author : '',
-    desc: props.book ? props.book.desc : '',
-    publishDate: props.book ? props.book.publishDate : '',
-    edition: props.book ? props.book.edtion : '',
-    status: props.book ? props.book.edition : false
+    title: '',
+    author: '',
+    desc: '',
+    publishDate: '',
+    edition: '',
+    status: false
   })
 
-  const [bookDetails, setDetails] = useState('')
+  const [collection, setCollection] = useState([])
+  const [pageMin, setPageMin] = useState(1)
+
+  // ***** TEST ENVIRONMENT START *****
+
+  const [bookMax, setBookMax] = useState(5)
+  const [pageMax, setPageMax] = useState(5)
+
+  // useEffect(() => {
+  //   const getCollection = async () => {
+  //     let res = await Client.get(`${baseURL}/books/collection`)
+
+  //     let bookArr = res.data
+  //     setBooks(bookArr)
+  //   }
+  //   getCollection()
+  // }, [])
+
+  // ***** TEST ENVIRONMENT END *****
 
   const handleChange = (e) => {
     console.log(e.target.value)
@@ -48,13 +64,20 @@ function App(props) {
 
   return (
     <div className="App">
-      <BookBar sFFBar={sFFBar} setBar={setBar} />
+      <BookBar bookBar={bookBar} setBar={setBar} />
       <NavBar />
       <Routes>
         <Route
           path="/"
           element={
-            <UserList collection={collection} setCollection={setCollection} />
+            <UserList
+              bookMax={bookMax}
+              collection={collection}
+              pageMax={pageMax}
+              pageMin={pageMin}
+              setCollection={setCollection}
+              setPageMax={setPageMax}
+            />
           }
         />
         <Route
@@ -68,11 +91,9 @@ function App(props) {
           element={
             <EditBook
               book={book}
-              change={handleChange}
               details={bookDetails}
               setBook={setBook}
               setDetails={setDetails}
-              submit={handleSubmit}
             />
           }
         />

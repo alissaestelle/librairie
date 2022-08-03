@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { domain, aPI } from '../globals'
 
-const BookBar = ({ sFFBar, setBar }) => {
+const BookBar = ({ bookBar, setBar }) => {
   let [count] = useState(0)
 
   useEffect(() => {
@@ -23,10 +23,11 @@ const BookBar = ({ sFFBar, setBar }) => {
         <span id="bb-title">Book Bar</span>
       </div>
       <div className="book-flex">
-        {sFFBar.map(
+        {bookBar.map(
           (book, idx) =>
             book.volumeInfo.title.length < 35 &&
-            book.volumeInfo.maturityRating === 'NOT_MATURE' && (
+            book.volumeInfo.maturityRating === 'NOT_MATURE' &&
+            book.volumeInfo.title !== 'The Science of Strong Women' && (
               <div className="details-flex" key={book.etag}>
                 <div className="book-cover">
                   <img
@@ -47,8 +48,6 @@ const BookBar = ({ sFFBar, setBar }) => {
                       Author: <br /> {book.volumeInfo.authors[0]}
                     </p>
                   </div>
-                  {/* <p>Publisher: {book.volumeInfo.publisher}</p> */}
-                  {/* <p>{book.volumeInfo.description}</p> */}
                 </div>
               </div>
             )

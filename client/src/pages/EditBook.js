@@ -1,10 +1,9 @@
 import BookForm from '../components/BookForm'
-import Client from '../services/api'
-import { baseURL } from '../services/api'
+import Client, { baseURL } from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 
-const EditBook = ({ book, details, setDetails }) => {
+const EditBook = ({ book, details, setBooks, setDetails }) => {
   let { bookID } = useParams()
   let navigate = useNavigate()
 
@@ -18,7 +17,7 @@ const EditBook = ({ book, details, setDetails }) => {
     getBookByID()
   }, [bookID])
 
-  const handleEdit = (e) => {
+  const handleUpdate = (e) => {
     let edits = {
       ...details,
       [e.currentTarget.name]: e.currentTarget.value
@@ -26,7 +25,7 @@ const EditBook = ({ book, details, setDetails }) => {
     setDetails(edits)
   }
 
-  const submitEdit = async (e) => {
+  const submitUpdate = async (e) => {
     e.preventDefault()
     await Client.put(`${baseURL}/books/update/${bookID}`, details)
     setDetails('')
@@ -39,12 +38,12 @@ const EditBook = ({ book, details, setDetails }) => {
         <BookForm
           author={details.author}
           book={book}
-          change={handleEdit}
+          change={handleUpdate}
           desc={details.desc}
           edition={details.edition}
           key={details.id}
           publishDate={details.publishDate}
-          submit={submitEdit}
+          submit={submitUpdate}
           title={details.title}
         />
       )}

@@ -145,18 +145,20 @@ nav a:hover {
   color: lightseagreen;
 }
 
-.pagination {
-  display: flex;
-  flex-direction: row wrap;
-  align-items: center;
-  justify-items: center;
-
+.user-list {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 5%;
   border: solid 1px gray;
   border-radius: 15px;
   overflow-y: scroll;
+}
+
+.table-flex {
+  display: flex;
+  flex-direction: row wrap;
+  align-items: center;
+  justify-items: center;
 }
 
 .book-table {
@@ -167,9 +169,8 @@ thead {
   height: 50px;
 }
 
-.tr {
-  height: 75px;
-}
+/* .tr {
+} */
 
 .title {
   width: 15%;
@@ -218,8 +219,34 @@ thead {
 }
 
 .delete {
-  width: 10%;
+  width: 15%;
   text-align: center;
+}
+
+.pagination {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pagination ul {
+  list-style-type: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+ul li {
+  display: inline;
+  padding: 0 5%;
+}
+
+#previous, #next {
+  display: inline;
+  padding: 0;
+}
+
+#next button {
+  width: 65px;
 }
 
 
