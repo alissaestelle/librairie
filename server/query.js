@@ -18,10 +18,20 @@ const deleteBook = async () => {
   stringify(book)
 }
 
+const getThisBook = async () => {
+  let thisBook = await Book.findAll({
+    where: {
+      id: 40
+    }
+  })
+  stringify(thisBook)
+}
+
 async function main() {
   try {
     // await getAllBooks()
-    await deleteBook()
+    // await getThisBook()
+    // await deleteBook()
   } catch (e) {
     console.log(e)
   } finally {

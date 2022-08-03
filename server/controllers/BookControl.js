@@ -46,6 +46,20 @@ const UpdateBook = async (req, res) => {
   }
 }
 
+const UpdateStatus = async (req, res) => {
+  try {
+    let thisID = parseInt(req.params.bookID)
+    let newStatus = req.body.status
+    await Book.upsert({
+      id: thisID,
+      status: newStatus
+    })
+    res.send({ msg: 'Status Successfully Updated', status: 'OK' })
+  } catch (e) {
+    throw e
+  }
+}
+
 const DeleteBook = async (req, res) => {
   try {
     await Book.destroy({
@@ -64,5 +78,6 @@ module.exports = {
   GetBookByID,
   DeleteBook,
   GetCollection,
-  UpdateBook
+  UpdateBook,
+  UpdateStatus
 }
