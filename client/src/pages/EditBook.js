@@ -7,7 +7,7 @@ const EditBook = ({ book, details, setDetails }) => {
   let { bookID } = useParams()
   let navigate = useNavigate()
 
-  // NOTE: [bookDetails] is now abbreviated to simply: [details]
+  // NOTE: [bookDetails] is now abbreviated to simply: [details] (sent from <App>)
 
   useEffect(() => {
     // getBookByID returns a specific book by ID and sets it to [details]
@@ -20,7 +20,7 @@ const EditBook = ({ book, details, setDetails }) => {
     getBookByID()
   }, [bookID])
 
-  // [handleUpdate] creates a copy of [details], combines it with the user input, and replaces [details] with the updated version
+  // [handleUpdate] creates a copy of [details], combines it with user event input, and replaces [details] with the updated version
   const handleUpdate = (e) => {
     let edits = {
       ...details,
@@ -29,7 +29,7 @@ const EditBook = ({ book, details, setDetails }) => {
     setDetails(edits)
   }
 
-  // [submitUpdate] sends a put request updating an existing book instance in the database, resetting [details] afterwards
+  // [submitUpdate] sends a put request to update an existing book instance in the database, resetting [details] afterwards
   const submitUpdate = async (e) => {
     e.preventDefault()
     await Client.put(`${baseURL}/books/update/${bookID}`, details)
@@ -37,7 +37,9 @@ const EditBook = ({ book, details, setDetails }) => {
     navigate('/')
   }
 
-  // Each property of [details] is extracted using dot notation and passed individually into <BookForm>, along with handleUpdate & submitUpdate.
+  // [handleUpdate] & [submitUpdate] aren't called on this page- they're passed to <BookForm> and called from there, so any book data set within [details] can be accessed all the way up until [submitUpdate] gets called.
+
+  // So at this point, values within [details] are still accessible, so each one is extracted and passed separately into <BookForm> (along with handleUpdate & submitUpdate), so that they can each be placed back into the original form to be updated later.
 
   return (
     <div className="edit-book">
