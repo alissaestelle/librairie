@@ -13,7 +13,6 @@ const BookBar = ({ bookBar, setBar }) => {
       )
       let bookArr = books.data.items
       setBar(bookArr)
-      console.log(bookArr)
     }
     getBooks()
   }, [])

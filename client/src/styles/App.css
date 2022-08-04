@@ -319,7 +319,9 @@ ul li {
 
 .book-form {
   max-width: 60%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
   border: 1px solid gray;
   border-radius: 15px;
 }
