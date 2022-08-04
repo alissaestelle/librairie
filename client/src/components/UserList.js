@@ -6,20 +6,20 @@ import { useEffect, useState } from 'react'
 const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
   const [currentPage, setCurrent] = useState(1)
   const pageIndex = [...new Array(pageMax)]
-  const [length] = useState(pageIndex.length - 1)
-  const [totalPages, setPages] = useState()
+  const [checked, setChecked] = useState(false)
+  const [thisID, setID] = useState('')
+  const [bookState, setBookState] = useState([])
+  let bookArr
+  let theseBooks
 
   useEffect(() => {
     const getCollection = async () => {
       let res = await Client.get(`${baseURL}/books/collection`)
 
-      let bookArr = res.data
-      bookArr = bookArr.reverse()
-      setCollection(bookArr)
-
-      let totalBooks = bookArr.length
-      let pages = Math.round(totalBooks / bookMax)
-      setPages(pages)
+      bookArr = res.data
+      // bookArr = bookArr.sort()
+      setCollection(bookArr.reverse())
+      setBookState(bookArr)
     }
     getCollection()
   }, [])
@@ -27,13 +27,49 @@ const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
   const getFiveBooks = () => {
     let start = currentPage * bookMax - bookMax
     let end = start + bookMax
-    return collection.slice(start, end)
+    theseBooks = collection.slice(start, end)
   }
 
   getFiveBooks()
 
-  const deleteBook = async (book) => {
-    await Client.delete(`${baseURL}/books/delete/${book}`)
+  const updateStatus = async (e) => {
+    let boolean = e.target.checked
+    let bookID = e.target.id
+    let bookStatus = {
+      status: boolean
+    }
+    setChecked(boolean)
+    setID(bookID)
+    await Client.put(`${baseURL}/books/status/${bookID}`, bookStatus)
+
+    window.location.reload(false)
+  }
+
+  const sortByStatus = (e) => {
+    let available = bookState.filter((book) => !book.status)
+    let unavailable = bookState.filter((book) => book.status)
+
+    if (e.target.value === 'in') {
+      setCollection(bookState)
+      setCollection(available)
+      console.log('BS', bookState)
+    }
+
+    if (e.target.value === 'out') {
+      setCollection(bookState)
+      setCollection(unavailable)
+    }
+
+    if (e.target.value === 'all') {
+      setCollection(bookState)
+    }
+  }
+
+  const deleteBook = async (e) => {
+    let bookID = e.target.id
+    setID(bookID)
+    await Client.delete(`${baseURL}/books/delete/${bookID}`)
+
     window.location.reload(false)
   }
 
@@ -48,32 +84,57 @@ const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
               <th className="desc">Description</th>
               <th className="publishDate">Published</th>
               <th className="edition">Edition</th>
-              <th className="status">Status</th>
+              <th className="status">
+                <form>
+                  <label htmlFor="status">Status</label>
+                  <select id="select" onChange={sortByStatus}>
+                    <option value="all" defaultValue="all">
+                      All Books
+                    </option>
+                    <option value="in">Available</option>
+                    <option value="out">Checked Out</option>
+                  </select>
+                </form>
+              </th>
               <th className="delete">Delete</th>
             </tr>
           </thead>
           <tbody>
-            {getFiveBooks().map((book) => (
+            {theseBooks.map((book) => (
               <tr key={book.id} className="tr">
-                <td className="title">
+                <td id="title">
                   <Link to={`/edit/${book.id}`}>{book.title}</Link>
                 </td>
-                <td className="author">{book.author}</td>
-                <td className="desc">{book.desc}</td>
-                <td className="publishDate">{book.publishDate}</td>
-                <td className="edition">{book.edition}</td>
-                <td className="status">
-                  <label className="status">
-                    <select name="status">
-                      <option value="in">Check In</option>
-                      <option value="out">Check Out</option>
-                    </select>
-                  </label>
+                <td id="author">{book.author}</td>
+                <td id="desc">{book.desc}</td>
+                <td id="publishDate">
+                  {new Date(book.publishDate).toLocaleDateString()}
+                </td>
+                <td id="edition">{book.edition}</td>
+                <td id="status">
+                  <form id="check">
+                    {book.status === true ? (
+                      <input
+                        type="checkbox"
+                        id={book.id}
+                        defaultChecked="true"
+                        onChange={updateStatus}
+                      />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        id={book.id}
+                        onChange={updateStatus}
+                      />
+                    )}
+                  </form>
                 </td>
                 <td className="delete">
-                  <button id="delete" onClick={() => deleteBook(book.id)}>
-                    Delete
-                  </button>
+                  <div id="delete">
+                    <button id={book.id} onClick={deleteBook}>
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -82,7 +143,6 @@ const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
       </div>
       <Pagination
         currentPage={currentPage}
-        length={length}
         pageIndex={pageIndex}
         pageMax={pageMax}
         setCurrent={setCurrent}

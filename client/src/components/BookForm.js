@@ -38,6 +38,7 @@ const BookForm = ({
         ></input>
         <label htmlFor="pub_date">Publish Date</label>
         <input
+          required
           type="date"
           name="publishDate"
           value={publishDate ? publishDate || '' : book.publishDate}

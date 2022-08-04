@@ -1,16 +1,22 @@
+import { useState } from 'react'
+
 const Pagination = ({ currentPage, pageIndex, pageMax, setCurrent }) => {
+  const [pageClass, setClass] = useState(false)
   let thesePages
 
   const nextPage = () => {
-    setCurrent((page) => page + 1)
+    setCurrent((page) => parseInt(page) + 1)
   }
 
   const prevPage = () => {
-    setCurrent((page) => page - 1)
+    setCurrent((page) => parseInt(page) - 1)
   }
 
   const changePage = (e) => {
-    let thisPage = e.target.value
+    console.log(e)
+    let thisPage = parseInt(e.target.value)
+    setClass(true)
+    console.log(pageClass)
     setCurrent(thisPage)
   }
 
@@ -30,13 +36,13 @@ const Pagination = ({ currentPage, pageIndex, pageMax, setCurrent }) => {
             Previous
           </button>
         </li>
-        <li>
+        <li className="numbers">
           {thesePages.map((page, idx) => (
             <button
               key={idx}
               value={page}
               onClick={changePage}
-              className={currentPage === page ? 'active' : null}
+              className={currentPage === parseInt(page) ? 'active' : null}
               disabled={currentPage >= thesePages.length}
             >
               {page}

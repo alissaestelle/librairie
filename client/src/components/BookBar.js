@@ -8,7 +8,8 @@ const BookBar = ({ bookBar, setBar }) => {
   useEffect(() => {
     const getBooks = async () => {
       const books = await axios.get(
-        `${domain}?q=subject:science-fantasy&orderBy=newest&maxResults=40&key=${aPI}`
+        //Original Genre Request: Science Fantasy
+        `${domain}?q=subject:literary-fiction&orderBy=newest&maxResults=40&key=${aPI}`
       )
       let bookArr = books.data.items
       setBar(bookArr)
@@ -26,8 +27,7 @@ const BookBar = ({ bookBar, setBar }) => {
         {bookBar.map(
           (book, idx) =>
             book.volumeInfo.title.length < 35 &&
-            book.volumeInfo.maturityRating === 'NOT_MATURE' &&
-            book.volumeInfo.title !== 'The Science of Strong Women' && (
+            book.volumeInfo.maturityRating !== 'MATURE' && (
               <div className="details-flex" key={book.etag}>
                 <div className="book-cover">
                   <img

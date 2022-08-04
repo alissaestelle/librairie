@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import NewBook from './pages/NewBook'
 import UserList from './components/UserList'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './styles/App.css'
 
 function App() {
@@ -23,25 +23,10 @@ function App() {
     status: false
   })
 
+  const [bookMax] = useState(5)
   const [collection, setCollection] = useState([])
-  const [pageMin, setPageMin] = useState(1)
-
-  // ***** TEST ENVIRONMENT START *****
-
-  const [bookMax, setBookMax] = useState(5)
   const [pageMax, setPageMax] = useState(5)
-
-  // useEffect(() => {
-  //   const getCollection = async () => {
-  //     let res = await Client.get(`${baseURL}/books/collection`)
-
-  //     let bookArr = res.data
-  //     setBooks(bookArr)
-  //   }
-  //   getCollection()
-  // }, [])
-
-  // ***** TEST ENVIRONMENT END *****
+  const [pageMin] = useState(1)
 
   const handleChange = (e) => {
     console.log(e.target.value)
@@ -74,9 +59,7 @@ function App() {
               bookMax={bookMax}
               collection={collection}
               pageMax={pageMax}
-              pageMin={pageMin}
               setCollection={setCollection}
-              setPageMax={setPageMax}
             />
           }
         />
@@ -92,7 +75,6 @@ function App() {
             <EditBook
               book={book}
               details={bookDetails}
-              setBook={setBook}
               setDetails={setDetails}
             />
           }

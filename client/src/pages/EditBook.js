@@ -3,7 +3,7 @@ import Client, { baseURL } from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 
-const EditBook = ({ book, details, setBooks, setDetails }) => {
+const EditBook = ({ book, details, setDetails }) => {
   let { bookID } = useParams()
   let navigate = useNavigate()
 

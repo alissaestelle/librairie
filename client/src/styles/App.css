@@ -18,12 +18,9 @@
   /* height: 100vh; */
 }
 
-.main {
-}
-
 .book-bar {
   height: 75%;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .bb-header {
@@ -78,7 +75,6 @@
 .book-details {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 
   width: 130px;
   height: 150px;
@@ -87,7 +83,6 @@
 .book-title {
   height: 110px;
   line-height: 1;
-  /* text-align: center; */
 }
 
 .author {
@@ -122,14 +117,9 @@
 .nav-bar nav {
   width: 100%;
   margin: 0 auto;
-  /* margin-top: 2.5%;
-  margin-bottom: 15px;
-  padding-top: 30px; */
-
 }
 
 nav a, #slash {
-  /* margin: 0 5%; */
   text-decoration: none;
   font-family: 'Maginia';
   font-size: 45px;
@@ -169,10 +159,8 @@ thead {
   height: 50px;
 }
 
-/* .tr {
-} */
 
-.title {
+.title, #title {
   width: 15%;
   padding: 2.5px;
 
@@ -180,41 +168,57 @@ thead {
   text-align: center;
 }
 
-.title a {
+#title a {
   text-decoration: none;
-  color: lightseagreen;
+  color: rgb(6, 65, 226);
 }
 
-.title a:hover {
-  color: rgb(141, 213, 219);
+#title a:hover {
+  color: rgb(6, 65, 226, 0.5);
 }
 
-.author {
+.author, #author {
   width: 20%;
-  padding: 5px;
 
   text-align: center;
 }
 
-.desc {
+.desc, #desc {
   width: 25%;
   padding: 2.5px;
+}
 
+#desc {
   font-size: 14px;
 }
 
-.publishDate {
+.publishDate, #publishDate {
   width: 15%;
   text-align: center;
 }
 
-.edition {
+.edition, #edition {
   width: 5%;
   text-align: center;
 }
 
-.status {
+.status, #status {
   width: 10%;
+  text-align: center;
+}
+
+.status form {
+  padding: 30px 10px 0 10px;
+}
+
+#select {
+  width: 100px;
+  height: 25px;
+  margin-top: 5px;
+  background-color: transparent;
+  border-style:hidden;
+  box-shadow: none;
+  border: 1px solid black;
   text-align: center;
 }
 
@@ -223,8 +227,29 @@ thead {
   text-align: center;
 }
 
+#delete {
+  width: 60px;
+  margin: 0 auto;
+  background-color: transparent;
+  border-style:hidden;
+  box-shadow: none;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#delete button {
+  height: 30px;
+  background-color: transparent;
+  border-style:hidden;
+  box-shadow: none;
+}
+
+#delete button:hover {
+  color: rgb(6, 65, 226, 0.5);
+}
+
 .pagination {
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
@@ -245,9 +270,51 @@ ul li {
   padding: 0;
 }
 
-#next button {
+#previous button, #next button {
   width: 65px;
+  height: 30px;
+  background-color: transparent;
+  border-style:hidden;
+  box-shadow: none;
+  border: 1px solid black;
 }
+
+#previous button {
+  width: 80px;
+}
+
+.numbers {
+  width: 75%;
+}
+
+.numbers button {
+  width: 35px;
+  height: 30px;
+  margin: 0 1.5%;
+  background-color: transparent;
+  border-style:hidden;
+  box-shadow: none;
+  border: 1px solid black;
+}
+
+.numbers button:hover {
+  color: rgb(6, 65, 226, 0.5);
+}
+
+#previous button:hover {
+  color: rgb(6, 65, 226, 0.5);
+}
+
+#next button:hover {
+  color: rgb(6, 65, 226, 0.5);
+}
+
+/* .active {
+  color: white;
+  background-color: lightseagreen;
+  border: 1px solid white;
+
+} */
 
 
 .new-book {
