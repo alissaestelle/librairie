@@ -8,6 +8,16 @@ const BookForm = ({
   submit,
   title
 }) => {
+  // State is being passed from two different components here: <NewBook> & <EditBook>.
+
+  // Any instance of [change] or [submit] found in this code could be referencing functions from either component, since [handleChange] from <NewBook> and [handleUpdate] from <EditBook> were both changed to: [change]. Similarly, [handleSubmit] from <NewBook> and [submitUpdate] from <EditBook> were both changed to: [submit].
+
+  // I did this to avoid unnecessary conditionals for the form's [onChange]/[onSubmit] events.
+
+  // In terms of the <input> conditionals: [<property>] refers to [details.<property>], which comes from <EditBook>, while [book.<property>] comes from <NewBook>.
+
+  // Taking the first ternary as an example (JS:30), this conditional first checks to see if a value for [title] exists, selecting its value if so (or allow a blank value). This immediately signals that the form is being used to update a book, since [title] comes from <EditBook>. On the other hand, if [title] does not exist, the ternary will select any values found in [book.title], meaning the form is being used to add a new book instead.
+
   return (
     <div className="book-form">
       <form className="form-flex" onSubmit={submit}>
