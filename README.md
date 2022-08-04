@@ -25,6 +25,9 @@ Note: This app has Concurrently installed. In the terminal, /cd into the server 
 <br>
 
 1. To add a new book to the collection, click _Add Book_.
+
+![](AddBook.gif)
+
 2. To update a book, click on its title.
 3. To delete a book, click _Delete_.
 4. To check a book in or out, click the checkbox in its table row. An empty checkmark means a book is currently available.
