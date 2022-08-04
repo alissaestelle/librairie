@@ -8,16 +8,6 @@
   src: url('./MaginiaRegular-BWP6x.otf');
 }
 
-/* @font-face {
-  font-family: 'Rosmatika';
-  src: url('./RosmatikaRegular-BWA45.ttf');
-} */
-
-
-.App {
-  /* height: 100vh; */
-}
-
 .book-bar {
   height: 75%;
   margin-top: 5px;
@@ -85,17 +75,17 @@
   line-height: 1;
 }
 
-.author {
+.bb-author {
   height: 70px;
   line-height: 1;
 }
 
-#book-title, #author {
+#book-title, #bb-author {
   margin: 0;
   padding: 5px;
 }
 
-#author {
+#bb-author {
   padding-top: 5px;
 }
 
@@ -137,11 +127,11 @@ nav a:hover {
 
 .user-list {
   width: 90%;
-  margin: 0 auto;
-  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
   border: solid 1px gray;
   border-radius: 15px;
-  overflow-y: scroll;
 }
 
 .table-flex {

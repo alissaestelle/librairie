@@ -43,8 +43,8 @@ const BookBar = ({ bookBar, setBar }) => {
                       {book.volumeInfo.title}
                     </p>
                   </div>
-                  <div className="author">
-                    <p id="author">
+                  <div className="bb-author">
+                    <p id="bb-author">
                       Author: <br /> {book.volumeInfo.authors[0]}
                     </p>
                   </div>
