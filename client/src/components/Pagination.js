@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Pagination = ({ currentPage, pageIndex, pageMax, setCurrent }) => {
+const Pagination = ({ currentPage, pageIndex, pageRange, setCurrent }) => {
   const [pageClass, setClass] = useState(false)
   let thesePages
 
@@ -13,15 +13,12 @@ const Pagination = ({ currentPage, pageIndex, pageMax, setCurrent }) => {
   }
 
   const changePage = (e) => {
-    console.log(e)
     let thisPage = parseInt(e.target.value)
-    setClass(true)
-    console.log(pageClass)
     setCurrent(thisPage)
   }
 
   const getFivePages = () => {
-    let start = Math.floor(currentPage / pageMax) * pageMax
+    let start = Math.floor(currentPage / pageRange) * pageRange
     thesePages = pageIndex.map(() => (start = start + 1))
     return thesePages
   }

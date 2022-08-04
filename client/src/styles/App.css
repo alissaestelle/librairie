@@ -213,25 +213,30 @@ thead {
 }
 
 .delete {
-  width: 15%;
+  width: 20%;
   text-align: center;
 }
 
 #delete {
-  width: 60px;
+  display: block;
+  width: 75%;
   margin: 0 auto;
   background-color: transparent;
   border-style:hidden;
   box-shadow: none;
   border: 1px solid black;
   text-align: center;
+  overflow: hidden;
 }
 
 #delete button {
+  width: 100%;
   height: 30px;
+  margin: 0 auto;
   background-color: transparent;
   border-style:hidden;
   box-shadow: none;
+  text-align: center;
 }
 
 #delete button:hover {

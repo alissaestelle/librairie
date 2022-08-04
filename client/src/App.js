@@ -11,9 +11,13 @@ import './styles/App.css'
 function App() {
   let navigate = useNavigate()
 
+  // bookBar: an array of books from Google Books API
   const [bookBar, setBar] = useState([])
-  const [bookDetails, setDetails] = useState('')
 
+  // collection: an array of user books from the database
+  const [collection, setCollection] = useState([])
+
+  // book: initial book state that catches input when a user adds a book (its attributes match the ones in the database's Book model)
   const [book, setBook] = useState({
     title: '',
     author: '',
@@ -23,16 +27,24 @@ function App() {
     status: false
   })
 
-  const [bookMax] = useState(5)
-  const [collection, setCollection] = useState([])
-  const [pageMax, setPageMax] = useState(5)
-  const [pageMin] = useState(1)
+  // bookDetails: empty state that catches a specific book whenever one is returned from the database (used for PUT requests later)
+  const [bookDetails, setDetails] = useState('')
 
+  // USER TABLE DATA:
+
+  // bookMax: the maximum number of books that can be displayed per page in the user table (aka 5 books per page)
+  const [bookMax] = useState(5)
+
+  // pageRange: the fixed range of paginated buttons that can be displayed in the user table (aka 5 page buttons at all times)
+  const [pageRange, setPageRange] = useState(5)
+
+  // handleChange that grabs the user's input to create a new book
   const handleChange = (e) => {
     console.log(e.target.value)
     setBook({ ...book, [e.target.name]: e.target.value })
   }
 
+  // handleSubmit sends a post request to create a new book in the database
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.post(`${baseURL}/books/create`, book)
@@ -58,7 +70,7 @@ function App() {
             <UserList
               bookMax={bookMax}
               collection={collection}
-              pageMax={pageMax}
+              pageRange={pageRange}
               setCollection={setCollection}
             />
           }

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
 import { useEffect, useState } from 'react'
 
-const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
+const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
   const [currentPage, setCurrent] = useState(1)
-  const pageIndex = [...new Array(pageMax)]
+  const pageIndex = [...new Array(pageRange)]
   const [checked, setChecked] = useState(false)
   const [thisID, setID] = useState('')
   const [bookState, setBookState] = useState([])
@@ -26,6 +26,7 @@ const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
 
   const getFiveBooks = () => {
     let start = currentPage * bookMax - bookMax
+    console.log(bookMax)
     let end = start + bookMax
     theseBooks = collection.slice(start, end)
   }
@@ -144,7 +145,7 @@ const UserList = ({ bookMax, collection, pageMax, setCollection }) => {
       <Pagination
         currentPage={currentPage}
         pageIndex={pageIndex}
-        pageMax={pageMax}
+        pageRange={pageRange}
         setCurrent={setCurrent}
       />
     </div>
