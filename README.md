@@ -50,6 +50,7 @@ A starter collection has already been seeded from the database!
 - Postgres/PSQL
 - Sequelize
 - Express/Cors/Morgan
+- React
 - Node/Nodemon
 - Google Books API
 
