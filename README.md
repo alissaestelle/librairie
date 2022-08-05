@@ -28,10 +28,18 @@ Note: This app has Concurrently installed. In the terminal, /cd into the server 
 ![](AddBook.gif)
 
 2. To update a book, click on its title.
-3. To delete a book, click _Delete_.
-4. To check a book in or out, click the checkbox in its table row. An empty checkmark means a book is currently available.
-5. To filter books by status, select an option from the drop-down menu in the book status column.
-<br><br>
+
+![](EditBook2.gif)
+
+4. To delete a book, click _Delete_.
+
+![](DeleteBook.gif)
+
+6. To check a book in or out, click the checkbox in its table row. An empty checkmark means a book is currently available.
+7. To filter books by status, select an option from the drop-down menu in the book status column.
+
+![](SortBooks.gif)
+
 A starter collection has already been seeded from the database!
 
 ---
