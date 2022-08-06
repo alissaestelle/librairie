@@ -136,7 +136,7 @@ const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
                 <td id="author">{book.author}</td>
                 <td id="desc">{book.desc}</td>
                 <td id="publishDate">
-                  {new Date(book.publishDate).toLocaleDateString()}
+                  {new Date(`${book.publishDate} 00:00`).toLocaleDateString()}
                 </td>
                 <td id="edition">{book.edition}</td>
                 <td id="status">
