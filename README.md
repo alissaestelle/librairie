@@ -15,7 +15,7 @@ The user's personal book collection is formatted as a paginated list that displa
 
 **_Getting Started_**
 -
-Repo can be forked & cloned, and dependencies can be installed by running: _npm i_.
+Repo can be forked & cloned, and dependencies can be installed by running: ```npm i```.
 <br><br>
 <strong>Note</strong>: This app has Concurrently installed. In the terminal, <strong>/cd into the server file</strong> and run ```npm run dev``` to spin up both the React site and the server simultaneously.
 <br>
@@ -32,12 +32,12 @@ Repo can be forked & cloned, and dependencies can be installed by running: _npm 
 
 ![](DeleteBook.gif)
 
-<strong>6. To check a book in or out, click the checkbox in its table row. An empty checkmark means a book is currently available.</strong>
+<strong>6. To check a book in or out, click the checkbox in its table row. An empty checkmark means a book is currently available.</strong><br><br>
 <strong>7. To filter books by status, select an option from the drop-down menu in the book status column.</strong>
 
 ![](SortBooks.gif)
 
-<strong>Note</strong>: A starter collection has already been seeded from the database!
+<strong>Note</strong>: A starter collection has already been seeded to the database!
 
 **_Technologies_**
 - 
