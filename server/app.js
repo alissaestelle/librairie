@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const logger = require('morgan')
 // Heroku Deploy CMD:
-// const path = require('path')
+const path = require('path')
 
 const app = express()
 const BookRouter = require('./routes/BookRouter')
@@ -15,7 +15,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 // Heroku Deploy CMD:
-// app.use(express.static(path.join(__dirname + 'public')))
+app.use(express.static(path.join(__dirname + '/public')))
 
 app.use('/books', BookRouter)
 

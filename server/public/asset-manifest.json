@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.776ec8dc.css",
+    "main.js": "/static/js/main.2263985b.js",
+    "static/media/MaginiaRegular-BWP6x.otf": "/static/media/MaginiaRegular-BWP6x.e48f693cfbef14581ca9.otf",
+    "static/media/Backslash-RpJol.otf": "/static/media/Backslash-RpJol.5e36796df08ea29b5db5.otf",
+    "index.html": "/index.html",
+    "main.776ec8dc.css.map": "/static/css/main.776ec8dc.css.map",
+    "main.2263985b.js.map": "/static/js/main.2263985b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.776ec8dc.css",
+    "static/js/main.2263985b.js"
+  ]
+}
