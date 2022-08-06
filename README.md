@@ -15,10 +15,7 @@ The user's personal book collection is formatted as a paginated list that displa
 
 **_Getting Started_**
 -
-Repo can be forked & cloned, and dependencies can be installed by running: ```npm i```.
-<br><br>
-<strong>Note</strong>: This app has Concurrently installed. In the terminal, <strong>/cd into the server file</strong> and run ```npm run dev``` to spin up both the React site and the server simultaneously.
-<br>
+To use the app, click the title of this README(_librairie_).
 
 <strong>1. To add a new book to the collection, click _Add Book_.</strong>
 
