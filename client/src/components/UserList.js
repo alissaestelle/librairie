@@ -9,7 +9,7 @@ const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
 
   const [currentPage, setCurrent] = useState(1)
 
-  // pageIndex: a new array of undefined values set to the length of pageRange, i.e. 5
+  // pageIndex: a new array of undefined values set to the length of pageRange (aka 5)
   const pageIndex = [...new Array(pageRange)]
 
   // checked: a boolean that determines whether or not a user has checked a book in or out
@@ -37,8 +37,8 @@ const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
     getCollection()
   }, [])
 
-  // [collection] is set to the array results from the database
-  // A copy of the array results is also set to [bookState]
+  // [collection] is set to the results array from the database
+  // A copy of the results array is also set to [bookState]
 
   // [getFiveBooks] partitions the [collection] array into groups of 5
   // Its output is set to [theseBooks], which is then used to create the React Map (JS: 131)
@@ -52,7 +52,7 @@ const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
 
   getFiveBooks()
 
-  // [updateStatus] sends a put request, updating *only the status row* of a book in the database
+  // [updateStatus] sends a PUT request, updating *only the status property* of a book in the database
   const updateStatus = async (e) => {
     // <e.target.checked>: automatically toggles a checkbox between true & false (extremely handy)
     let boolean = e.target.checked
@@ -60,7 +60,7 @@ const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
     // <e.target.id> corresponds to a specific book ID within the React Map
     let bookID = e.target.id
 
-    // [bookStatus]: a piece of state containing the only piece of information I want to update in the database
+    // [bookStatus]: a piece of state containing only the information that I want to update in the database
     let bookStatus = {
       status: boolean
     }
@@ -92,7 +92,7 @@ const UserList = ({ bookMax, collection, pageRange, setCollection }) => {
     }
   }
 
-  // [deleteBook] sends a delete request, deleting a book from the database
+  // [deleteBook] sends a DELETE request, deleting a book from the database
   const deleteBook = async (e) => {
     let bookID = e.target.id
     setID(bookID)

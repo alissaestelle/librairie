@@ -10,13 +10,13 @@ const BookForm = ({
 }) => {
   // State is being passed from two separate components here: <NewBook> & <EditBook>.
 
-  // Any instance of [change] or [submit] found in this code could be referencing functions from either component, since [handleChange] from <NewBook> and [handleUpdate] from <EditBook> were both changed to: [change]. Similarly, [handleSubmit] from <NewBook> and [submitUpdate] from <EditBook> were both changed to: [submit].
+  // Any instance of [change] or [submit] seen below could be referencing functions from either component, since [handleChange] from <NewBook> and [handleUpdate] from <EditBook> were both changed to: [change]. Similarly, [handleSubmit] from <NewBook> and [submitUpdate] from <EditBook> were both changed to: [submit].
 
-  // I did this to avoid unnecessary conditionals for the form's [onChange]/[onSubmit] events.
+  // I did this to avoid unnecessary conditionals for the <form's onChange/onSubmit> events.
 
   // In terms of the <input value> conditionals: [<property>] refers to [details.<property>] (which comes from <EditBook>) and [book.<property>] comes from <NewBook>.
 
-  // Taking the first ternary as an example (JS:30), the conditional first checks to see if a value for [title] exists, selecting its value if so (or allowing a blank value). This immediately signals that the form is being used to update a book, since [title] comes from <EditBook>. On the other hand, if [title] does not exist, the ternary will select any values found in [book.title], meaning the form is being used to add a new book instead, since [book.title] comes from <NewBook>.
+  // Taking the first ternary as an example (JS:30), the conditional first checks to see if a value for [title] exists, selecting its value if so (or alternatively, an empty string). This immediately signals that the form is being used to update a book, since [title] comes from <EditBook>. On the other hand, if [title] does not exist, the ternary will select any values found in [book.title], meaning the form is being used to add a new book instead, since [book.title] comes from <NewBook>.
 
   return (
     <div className="book-form">

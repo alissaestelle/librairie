@@ -10,7 +10,7 @@ const EditBook = ({ book, details, setDetails }) => {
   // NOTE: [bookDetails] is now abbreviated to simply: [details] (sent from <App>)
 
   useEffect(() => {
-    // getBookByID returns a specific book by ID and sets it to [details]
+    // [getBookByID] returns a specific book by ID and sets it to [details]
     const getBookByID = async () => {
       let res = await Client.get(`${baseURL}/books/find/${bookID}`)
 
@@ -20,7 +20,7 @@ const EditBook = ({ book, details, setDetails }) => {
     getBookByID()
   }, [bookID])
 
-  // [handleUpdate] creates a copy of [details], combines it with user event input, and replaces [details] with the updated version
+  // [handleUpdate] creates a copy of [details], combines it with user event input (e), then replaces [details] with the updated version
   const handleUpdate = (e) => {
     let edits = {
       ...details,
@@ -29,7 +29,7 @@ const EditBook = ({ book, details, setDetails }) => {
     setDetails(edits)
   }
 
-  // [submitUpdate] sends a put request to update an existing book instance in the database, resetting [details] afterwards
+  // [submitUpdate] sends a PUT request to update an existing book instance in the database, resetting [details] afterwards
   const submitUpdate = async (e) => {
     e.preventDefault()
     await Client.put(`${baseURL}/books/update/${bookID}`, details)
@@ -37,9 +37,9 @@ const EditBook = ({ book, details, setDetails }) => {
     navigate('/')
   }
 
-  // [handleUpdate] & [submitUpdate] aren't called on this page- they're passed to <BookForm> and called from there, so any book data set within [details] can be accessed all the way up until [submitUpdate] gets called.
+  // [handleUpdate] & [submitUpdate] aren't called on this page- they're passed to <BookForm> and called from there, so any book data set in [details] can be accessed all the way up until [submitUpdate] gets called
 
-  // So at this point, values within [details] are still accessible, so each one is extracted and passed separately into <BookForm> (along with handleUpdate & submitUpdate), so that they can each be placed back into the original form to be updated later.
+  // So at this point, values within [details] are still accessible, so each one is extracted and passed separately into <BookForm> (along with [handleUpdate] & [submitUpdate]) so that later, they can each be placed back into the same form originally used to add a book
 
   return (
     <div className="edit-book">

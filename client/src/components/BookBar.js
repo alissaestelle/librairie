@@ -6,6 +6,7 @@ const BookBar = ({ bookBar, setBar }) => {
   let [count] = useState(0)
 
   useEffect(() => {
+    // [getBooks] returns an array of books from Google Books API
     const getBooks = async () => {
       const books = await axios.get(
         // *Self To-Do: Change Search Back to Science Fantasy Once API Fixes Results*
@@ -17,7 +18,7 @@ const BookBar = ({ bookBar, setBar }) => {
     getBooks()
   }, [])
 
-  // Results returned from Google Books API gets set to [bookBar] state and mapped below:
+  // The results array gets set to [bookBar] and mapped below:
 
   return (
     <div className="book-bar">

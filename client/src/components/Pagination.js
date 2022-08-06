@@ -1,4 +1,7 @@
 const Pagination = ({ currentPage, pageIndex, pageRange, setCurrent }) => {
+  // Note: The current state of [pageIndex] (JS:27) is:
+  // [pageIndex] = [undefined, undefined, undefined, undefined, undefined]
+
   let thesePages
 
   const nextPage = () => {
@@ -14,10 +17,10 @@ const Pagination = ({ currentPage, pageIndex, pageRange, setCurrent }) => {
   const changePage = (e) => {
     let thisPage = parseInt(e.target.value)
     setCurrent(thisPage)
-    // Sets [currentPage] to any page chosen in the React Map
+    // Sets [currentPage] to any page value chosen in [thesePages] (JS:24)
   }
 
-  // [getFivePages] updates page numbers with the next set of pages in the pagination
+  // [getFivePages] updates page buttons with the next set of numbers in the pagination
   const getFivePages = () => {
     let start = Math.floor(currentPage / pageRange) * pageRange
     // Translation: start = Math.floor(currentPage / 5) * 5
@@ -28,7 +31,7 @@ const Pagination = ({ currentPage, pageIndex, pageRange, setCurrent }) => {
 
   getFivePages()
 
-  // [thesePages] maps the page numbers to each button in the pagination:
+  // [thesePages] (JS:27) maps the page numbers to each button in the pagination:
 
   return (
     <div className="pagination">
